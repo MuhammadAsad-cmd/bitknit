@@ -18,7 +18,6 @@
     "react-fast-marquee": "^1.6.5",
     "react-floating-whatsapp": "^5.0.8",
     "react-icons": "^5.5.0",
-    "react-whatsapp-widget": "^2.2.0",
     "swiper": "^12.0.3"
   },
   "devDependencies": {
