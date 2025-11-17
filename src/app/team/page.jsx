@@ -2,107 +2,85 @@
 
 import React from "react";
 import PageHero from "@/components/PageHero";
-import { Linkedin, Mail, Github } from "lucide-react";
+import { Linkedin } from "lucide-react";
+import Link from "next/link";
 
 const teamMembers = [
   {
-    name: "John Doe",
-    role: "CEO & Founder",
-    bio: "Visionary leader with 10+ years in tech. Passionate about building products that matter.",
-    image: "/images/team/1.jpg",
-    linkedin: "https://linkedin.com/in/johndoe",
-    email: "john@bitknitlimited.com",
-    github: "https://github.com/johndoe",
+    name: "Mutahar Khan",
+    role: "CEO",
+    image: "/images/team/mutahar-khan.jpg",
+    linkedin: "https://www.linkedin.com/in/mutahar-khan/",
   },
   {
-    name: "Jane Smith",
-    role: "CTO",
-    bio: "Full-stack architect specializing in scalable systems and cutting-edge technologies.",
-    image: "/images/team/2.jpg",
-    linkedin: "https://linkedin.com/in/janesmith",
-    email: "jane@bitknitlimited.com",
-    github: "https://github.com/janesmith",
+    name: "Muhammad Khakwani",
+    role: "Full Stack App Developer",
+    image: "/images/team/muhammad-khakwani.jpg",
+    linkedin: "https://www.linkedin.com/in/muhammad-khakwani/",
   },
   {
-    name: "Mike Johnson",
-    role: "Lead Designer",
-    bio: "Creative designer focused on user experience and beautiful, functional interfaces.",
-    image: "/images/team/3.jpg",
-    linkedin: "https://linkedin.com/in/mikejohnson",
-    email: "mike@bitknitlimited.com",
-    github: "https://github.com/mikejohnson",
+    name: "Haider Mehmood",
+    role: "Software Developer",
+    image: "/images/team/haider-mehmood.jpg",
+    linkedin: "https://www.linkedin.com/in/haiderm372/",
   },
   {
-    name: "Sarah Williams",
-    role: "Senior Developer",
-    bio: "React and Next.js expert. Building performant web applications with modern tools.",
-    image: "/images/team/4.jpg",
-    linkedin: "https://linkedin.com/in/sarahwilliams",
-    email: "sarah@bitknitlimited.com",
-    github: "https://github.com/sarahwilliams",
+    name: "Umair Abid",
+    role: "Full Stack Mobile App Developer",
+    image: "/images/team/umair-abid.jpg",
+    linkedin: "https://www.linkedin.com/in/umair-abid-140954295/",
   },
   {
-    name: "David Brown",
-    role: "Mobile Developer",
-    bio: "Flutter and React Native specialist creating seamless cross-platform experiences.",
-    image: "/images/team/5.jpg",
-    linkedin: "https://linkedin.com/in/davidbrown",
-    email: "david@bitknitlimited.com",
-    github: "https://github.com/davidbrown",
+    name: "Faiza Ramzan",
+    role: "Flutter App Developer",
+    image: "/images/team/faiza-ramzan.jpg",
+    linkedin: "https://www.linkedin.com/in/faiza-ramzan-b50350300/",
   },
   {
-    name: "Emily Davis",
+    name: "Hareem Ahmad",
     role: "UI/UX Designer",
-    bio: "User-centered designer transforming ideas into intuitive and engaging experiences.",
-    image: "/images/team/6.jpg",
-    linkedin: "https://linkedin.com/in/emilydavis",
-    email: "emily@bitknitlimited.com",
-    github: "https://github.com/emilydavis",
+    image: "/images/team/hareem-ahmad.jpg",
+    linkedin: "https://www.linkedin.com/in/hareem-ahmad/",
   },
 ];
 
 function TeamCard({ member }) {
+  const initials = member.name.split(' ').map(n => n[0]).join('');
+  
   return (
-    <div className="group bg-white rounded-2xl p-6 border border-zinc-200 hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-      <div className="aspect-square w-full max-w-[240px] mx-auto mb-6 rounded-2xl overflow-hidden bg-linear-to-br from-zinc-200 to-zinc-100">
-        {/* Placeholder for team member image */}
-        <div className="w-full h-full flex items-center justify-center text-zinc-400 text-4xl font-bold">
-          {member.name.split(' ').map(n => n[0]).join('')}
+    <div className="group bg-white rounded-2xl p-5 md:p-6 border border-zinc-200 hover:border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col items-center">
+      <div className="relative mb-4">
+        <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden bg-linear-to-br from-zinc-200 to-zinc-100 ring-2 ring-zinc-100 group-hover:ring-blue-200 transition-all duration-300">
+          {member.image ? (
+            <img
+              src={member.image}
+              alt={member.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-zinc-400 text-2xl md:text-3xl font-bold">
+              {initials}
+            </div>
+          )}
         </div>
       </div>
       
-      <div className="text-center">
-        <h3 className="font-unbounded text-xl font-semibold text-zinc-900 mb-1">
+      <div className="text-center grow flex flex-col">
+        <h3 className="font-unbounded text-lg md:text-xl font-semibold text-zinc-900 mb-1">
           {member.name}
         </h3>
-        <p className="text-blue-600 text-sm font-medium mb-3">{member.role}</p>
-        <p className="text-zinc-600 text-sm leading-relaxed mb-6">
-          {member.bio}
-        </p>
+        <p className="text-zinc-600 text-sm md:text-base mb-4">{member.role}</p>
         
-        <div className="flex items-center justify-center gap-3">
-          <a
+        <div className="mt-auto">
+          <Link
             href={member.linkedin}
+            title="LinkedIn"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 rounded-lg bg-blue-500/10 hover:bg-blue-500 text-blue-600 hover:text-white flex items-center justify-center transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 w-10 h-10 rounded-lg bg-blue-500/10 hover:bg-blue-500 text-blue-600 hover:text-white transition-all duration-200 group-hover:scale-110"
           >
             <Linkedin className="w-4 h-4" />
-          </a>
-          <a
-            href={`mailto:${member.email}`}
-            className="w-9 h-9 rounded-lg bg-blue-500/10 hover:bg-blue-500 text-blue-600 hover:text-white flex items-center justify-center transition-all duration-200"
-          >
-            <Mail className="w-4 h-4" />
-          </a>
-          <a
-            href={member.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 rounded-lg bg-blue-500/10 hover:bg-blue-500 text-blue-600 hover:text-white flex items-center justify-center transition-all duration-200"
-          >
-            <Github className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -118,10 +96,9 @@ export default function TeamPage() {
         badge="Who We Are"
       />
 
-      {/* Team Grid */}
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-white">
         <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
             {teamMembers.map((member, idx) => (
               <TeamCard key={idx} member={member} />
             ))}
