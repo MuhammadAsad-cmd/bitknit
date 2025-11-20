@@ -2,6 +2,11 @@
 
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
+import AnimateIn from "./AnimateIn";
+import GridPattern from "./GridPattern";
 
 const allReviews = [
   {
@@ -53,8 +58,8 @@ export default function Testimonials() {
   const duplicatedReviews = [...allReviews, ...allReviews];
 
   return (
-    <section id="reviews" className="pb-16 md:pb-24">
-      <div className="relative overflow-hidden bg-very-dark-blue">
+    <section id="reviews">
+      <div className="relative overflow-hidden bg-very-dark-blue py-16 md:py-24">
         {/* Gradient overlay for depth */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-blue-600/20 via-transparent to-transparent" />
         
@@ -65,53 +70,58 @@ export default function Testimonials() {
         </div>
 
         {/* Grid pattern */}
-        <div className="absolute inset-0 opacity-[0.25] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size-[60px_60px] z-1" />
-        
-        {/* Secondary grid pattern for depth */}
-        <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-size-[120px_120px] z-1" />
+        <GridPattern className="z-1" />
 
         {/* Header section with container */}
-        <div className="relative z-10 container py-14 md:py-20">
+        <div className="relative z-10 container mb-12 md:mb-16">
           <div className="text-center max-w-3xl mx-auto mb-4">
-            <h2 className="font-unbounded text-white text-3xl md:text-5xl">What our clients say</h2>
-            <p className="mt-3 text-white/70 font-sans text-sm md:text-base">
-              Discover the experiences that shape our story—insights, challenges, and triumphs that guide our path forward.
-            </p>
+            <AnimateIn type="fade-up" delay={0.1}>
+              <h2 className="font-unbounded text-white text-3xl md:text-5xl">What our clients say</h2>
+            </AnimateIn>
+            <AnimateIn type="fade-up" delay={0.2}>
+              <p className="mt-3 text-white/70 font-sans text-sm md:text-base">
+                Discover the experiences that shape our story—insights, challenges, and triumphs that guide our path forward.
+              </p>
+            </AnimateIn>
           </div>
         </div>
 
         {/* Marquee section - full width, no container */}
-        <div className="relative z-10 space-y-6 md:space-y-8 pb-14 md:pb-20">
+        <div className="relative z-10 space-y-6 md:space-y-8">
           {/* First row - moving left to right */}
-          <div className="relative">
-            <Marquee
-              speed={50}
-              gradient={true}
-              gradientColor={[1, 7, 26]}
-              gradientWidth={100}
-              pauseOnHover={true}
-            >
-              {duplicatedReviews.map((review, index) => (
-                <Card key={`row1-${index}`} text={review.text} author={review.author} />
-              ))}
-            </Marquee>
-          </div>
+          <AnimateIn type="fade-up" delay={0.3}>
+            <div className="relative">
+              <Marquee
+                speed={50}
+                gradient={true}
+                gradientColor={[1, 7, 26]}
+                gradientWidth={100}
+                pauseOnHover={true}
+              >
+                {duplicatedReviews.map((review, index) => (
+                  <Card key={`row1-${index}`} text={review.text} author={review.author} />
+                ))}
+              </Marquee>
+            </div>
+          </AnimateIn>
 
           {/* Second row - moving right to left */}
-          <div className="relative">
-            <Marquee
-              speed={50}
-              direction="right"
-              gradient={true}
-              gradientColor={[1, 7, 26]}
-              gradientWidth={100}
-              pauseOnHover={true}
-            >
-              {duplicatedReviews.map((review, index) => (
-                <Card key={`row2-${index}`} text={review.text} author={review.author} />
-              ))}
-            </Marquee>
-          </div>
+          <AnimateIn type="fade-up" delay={0.4}>
+            <div className="relative">
+              <Marquee
+                speed={50}
+                direction="right"
+                gradient={true}
+                gradientColor={[1, 7, 26]}
+                gradientWidth={100}
+                pauseOnHover={true}
+              >
+                {duplicatedReviews.map((review, index) => (
+                  <Card key={`row2-${index}`} text={review.text} author={review.author} />
+                ))}
+              </Marquee>
+            </div>
+          </AnimateIn>
         </div>
       </div>
     </section>

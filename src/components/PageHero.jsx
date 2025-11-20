@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import AnimateIn from "./AnimateIn";
+import GridPattern from "./GridPattern";
 
 export default function PageHero({ title, subtitle, badge }) {
   return (
@@ -15,10 +17,7 @@ export default function PageHero({ title, subtitle, badge }) {
       </div>
 
       {/* Grid pattern - matching home hero */}
-      <div className="absolute inset-0 opacity-[0.25] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size-[60px_60px]" />
-      
-      {/* Secondary grid pattern for depth - matching home hero */}
-      <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-size-[120px_120px]" />
+      <GridPattern />
 
       <div className="container relative z-10">
         <div className="max-w-4xl mx-auto text-center">
@@ -27,17 +26,20 @@ export default function PageHero({ title, subtitle, badge }) {
               <span className="text-white/90 text-sm font-medium">{badge}</span>
             </div>
           )} */}
-          <h1 className="font-unbounded text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-            {title}
-          </h1>
+          <AnimateIn type="fade-up" delay={0} priority>
+            <h1 className="font-unbounded text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              {title}
+            </h1>
+          </AnimateIn>
           {subtitle && (
-            <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
-              {subtitle}
-            </p>
+            <AnimateIn type="fade-up" delay={0.1} priority>
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto">
+                {subtitle}
+              </p>
+            </AnimateIn>
           )}
         </div>
       </div>
     </section>
   );
 }
-

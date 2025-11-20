@@ -3,7 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, Linkedin, MapPin } from "lucide-react";
+import { Mail, Phone, Linkedin, MapPin, MessageCircle } from "lucide-react";
+import GridPattern from "./GridPattern";
 
 const footerLinks = {
   services: [
@@ -36,10 +37,7 @@ export default function Footer() {
       </div>
 
       {/* Grid pattern */}
-      <div className="absolute inset-0 opacity-[0.25] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size-[60px_60px]" />
-      
-      {/* Secondary grid pattern for depth */}
-      <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-size-[120px_120px]" />
+      <GridPattern />
 
       <div className="relative z-10">
         {/* Main Footer Content */}
@@ -77,7 +75,7 @@ export default function Footer() {
                 </Link>
                 
                 <Link
-                  href="tel:+923070175479"
+                  href="https://wa.me/923070175479"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-white/70 hover:text-blue-400 text-sm transition-colors duration-200 group"
@@ -87,7 +85,6 @@ export default function Footer() {
                   </div>
                   <span>+92 307 0175479</span>
                 </Link>
-                
                 <Link
                   href="https://maps.app.goo.gl/i3jgwbbdomLrXkpU8"
                   target="_blank"
@@ -161,7 +158,7 @@ export default function Footer() {
         {/* Bottom Footer */}
         <div className="border-t border-white/10 bg-[#000000]/30 relative">
           {/* Grid pattern */}
-          <div className="absolute inset-0 opacity-[0.2] bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-size-[60px_60px]" />
+          <GridPattern primaryOpacity={0.2} secondaryOpacity={0.1} />
           
           <div className="container py-6 relative z-10">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">

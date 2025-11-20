@@ -2,6 +2,7 @@
 
 import React from "react";
 import { MinusIcon, PlusIcon } from "lucide-react";
+import AnimateIn from "./AnimateIn";
 
 const faqs = [
   {
@@ -77,35 +78,43 @@ export default function FAQ() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left side - Sticky */}
           <div className="lg:sticky lg:top-24 lg:self-start">
-            <h2 className="font-unbounded text-4xl md:text-[48px] leading-[50px] font-bold text-zinc-900 mb-6">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-zinc-600 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
-              Unlock a world of design potential with We grow. Our membership comes with the promise of endless
-              creativity and dedicated support.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-blue-600 border-2 border-transparent hover:bg-transparent hover:border-blue-600 hover:text-blue-600 text-white cursor-pointer font-medium px-8 py-3 rounded-full transition-colors duration-200">
-                EXPLORE SERVICES
-              </button>
-              <button className="text-blue-600 cursor-pointer font-medium px-8 py-3 rounded-full transition-colors duration-200 inline-flex items-center justify-center gap-2">
-                EXPLORE MORE
-                <span>→</span>
-              </button>
-            </div>
+            <AnimateIn type="fade-right" delay={0.1}>
+              <h2 className="font-unbounded text-4xl md:text-[48px] leading-[50px] font-bold text-zinc-900 mb-6">
+                Frequently Asked Questions
+              </h2>
+            </AnimateIn>
+            <AnimateIn type="fade-right" delay={0.2}>
+              <p className="text-zinc-600 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
+                Unlock a world of design potential with We grow. Our membership comes with the promise of endless
+                creativity and dedicated support.
+              </p>
+            </AnimateIn>
+            <AnimateIn type="fade-right" delay={0.3}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button className="bg-blue-600 border-2 border-transparent hover:bg-transparent hover:border-blue-600 hover:text-blue-600 text-white cursor-pointer font-medium px-8 py-3 rounded-full transition-colors duration-200">
+                  EXPLORE SERVICES
+                </button>
+                <button className="text-blue-600 cursor-pointer font-medium px-8 py-3 rounded-full transition-colors duration-200 inline-flex items-center justify-center gap-2">
+                  EXPLORE MORE
+                  <span>→</span>
+                </button>
+              </div>
+            </AnimateIn>
           </div>
 
           {/* Right side - Accordion */}
-          <div className="bg-white rounded-3xl shadow-sm border border-zinc-200 p-6 md:p-8">
-            {faqs.map((faq) => (
-              <AccordionItem
-                key={faq.id}
-                faq={faq}
-                isOpen={openId === faq.id}
-                onToggle={() => setOpenId(openId === faq.id ? null : faq.id)}
-              />
-            ))}
-          </div>
+          <AnimateIn type="fade-left" delay={0.4}>
+            <div className="bg-white rounded-3xl shadow-sm border border-zinc-200 p-6 md:p-8">
+              {faqs.map((faq) => (
+                <AccordionItem
+                  key={faq.id}
+                  faq={faq}
+                  isOpen={openId === faq.id}
+                  onToggle={() => setOpenId(openId === faq.id ? null : faq.id)}
+                />
+              ))}
+            </div>
+          </AnimateIn>
         </div>
       </div>
     </section>

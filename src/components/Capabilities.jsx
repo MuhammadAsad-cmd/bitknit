@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import AnimateIn from "./AnimateIn";
 
 const items = [
   {
@@ -67,53 +68,60 @@ export default function Capabilities() {
 
         <div className="relative z-10 container py-14 md:py-20">
           <div className="text-center mb-8 md:mb-10">
-            <h2 className="font-unbounded text-white text-3xl md:text-5xl tracking-tight">
-              Know Our Capabilities
-            </h2>
-            <p className="mt-4 max-w-3xl mx-auto text-white/80 font-sans">
-              We are a team of experienced media professionals, graphic designers, and
-              web developers, combining technical expertise with a strong sense of style.
-            </p>
+            <AnimateIn type="fade-up" delay={0.1}>
+              <h2 className="font-unbounded text-white text-3xl md:text-5xl tracking-tight">
+                Know Our Capabilities
+              </h2>
+            </AnimateIn>
+            <AnimateIn type="fade-up" delay={0.2}>
+              <p className="mt-4 max-w-3xl mx-auto text-white/80 font-sans">
+                We are a team of experienced media professionals, graphic designers, and
+                web developers, combining technical expertise with a strong sense of style.
+              </p>
+            </AnimateIn>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
             {/* Left column */}
             <div className="space-y-6">
-              {items.map((item) => {
+              {items.map((item, idx) => {
                 const isActive = item.key === active;
                 return (
-                  <button
-                    key={item.key}
-                    type="button"
-                    onClick={() => setActive(item.key)}
-                    className={`w-full text-left group transition-colors duration-200 font-unbounded text-white ${
-                      isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <div className="flex items-center cursor-pointer">
-                      <span
-                        className={`mr-4 h-6 w-1 rounded-full bg-blue-500 ${
-                          isActive ? "opacity-100" : "opacity-0 group-hover:opacity-60"
-                        }`}
-                      />
-                      <span className="text-2xl md:text-4xl font-semibold leading-[42px]">
-                        {item.label}
-                      </span>
-                    </div>
-                  </button>
+                  <AnimateIn key={item.key} type="fade-right" delay={0.3 + idx * 0.1}>
+                    <button
+                      type="button"
+                      onClick={() => setActive(item.key)}
+                      className={`w-full text-left group transition-colors duration-200 font-unbounded text-white ${
+                        isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
+                      }`}
+                    >
+                      <div className="flex items-center cursor-pointer">
+                        <span
+                          className={`mr-4 h-6 w-1 rounded-full bg-blue-500 ${
+                            isActive ? "opacity-100" : "opacity-0 group-hover:opacity-60"
+                          }`}
+                        />
+                        <span className="text-2xl md:text-4xl font-semibold leading-[42px]">
+                          {item.label}
+                        </span>
+                      </div>
+                    </button>
+                  </AnimateIn>
                 );
               })}
             </div>
 
             {/* Right column */}
-            <div className="rounded-2xl p-6 md:p-8 bg-[#FFFFFF17] h-[318px] backdrop-blur-sm ring-1 ring-white/10">
-              <h3 className="text-white font-unbounded text-xl md:text-2xl">
-                {activeItem.panelTitle}
-              </h3>
-              <p className="mt-4 text-white/85 font-sans leading-relaxed">
-                {activeItem.panelBody}
-              </p>
-            </div>
+            <AnimateIn type="fade-left" delay={0.4}>
+              <div className="rounded-2xl p-6 md:p-8 bg-[#FFFFFF17] h-[318px] backdrop-blur-sm ring-1 ring-white/10">
+                <h3 className="text-white font-unbounded text-xl md:text-2xl">
+                  {activeItem.panelTitle}
+                </h3>
+                <p className="mt-4 text-white/85 font-sans leading-relaxed">
+                  {activeItem.panelBody}
+                </p>
+              </div>
+            </AnimateIn>
           </div>
         </div>
       </div>

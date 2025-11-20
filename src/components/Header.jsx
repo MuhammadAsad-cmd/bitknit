@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import GridPattern from "./GridPattern";
 
 const navItems = [
   { name: "Services", href: "/services" },
@@ -13,15 +14,47 @@ const navItems = [
 ];
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Check if scrolled past hero section (approximately 100vh)
+      setIsScrolled(currentScrollY > 300);
+      
+      // Hide header when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 300) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-very-dark-blue py-1.5">
-      {/* Grid pattern - matching hero sections exactly */}
-        <div className="absolute inset-0 opacity-[0.25] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size-[60px_60px]" />
-      
-      {/* Secondary grid pattern for depth - matching hero sections exactly */}
-      <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-size-[120px_120px]" />
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${
+        isScrolled 
+          ? "bg-very-dark-blue/90 backdrop-blur-lg shadow-lg border-b border-white/10" 
+          : "bg-very-dark-blue"
+      } py-1.5`}
+    >
+      {/* Grid pattern - show on both states but with different opacity */}
+      <GridPattern 
+        primaryOpacity={isScrolled ? 0.1 : 0.25}
+        secondaryOpacity={isScrolled ? 0.05 : 0.15}
+      />
       
       <div className="container relative z-10">
         <div className="flex items-center justify-between h-20">
@@ -78,12 +111,16 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-very-dark-blue border-t border-white/10 relative">
-          {/* Grid pattern - matching hero sections exactly */}
-          <div className="absolute inset-0 opacity-[0.25] bg-[linear-gradient(rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-size-[60px_60px]" />
-          
-          {/* Secondary grid pattern for depth - matching hero sections exactly */}
-          <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(rgba(255,255,255,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.2)_1px,transparent_1px)] bg-size-[120px_120px]" />
+        <div className={`md:hidden border-t relative ${
+          isScrolled 
+            ? "bg-very-dark-blue/70 backdrop-blur-lg border-white/10" 
+            : "bg-very-dark-blue border-white/10"
+        }`}>
+          {/* Grid pattern - show on both states */}
+          <GridPattern 
+            primaryOpacity={isScrolled ? 0.1 : 0.25}
+            secondaryOpacity={isScrolled ? 0.05 : 0.15}
+          />
           
           <nav className="container py-4 flex flex-col gap-4 relative z-10">
             {navItems.map((item) => (
@@ -109,4 +146,3 @@ export default function Header() {
     </header>
   );
 }
-

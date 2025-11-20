@@ -2,12 +2,12 @@
 
 import React from "react";
 import PageHero from "@/components/PageHero";
+import Clients from "@/components/Clients";
+import Testimonials from "@/components/Testimonials";
+import CTA from "@/components/CTA";
+import Projects from "@/components/Projects";
 
 const projectsData = [
-  {
-    title: "Redesign a website for a gummies company",
-    tags: ["Branding", "UX UI Design", "React Development", "CRO"],
-  },
   {
     title: "Redesign a website for a h2O company",
     tags: [
@@ -97,7 +97,9 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
+      <Clients />
+      <Testimonials />
+      <CTA />
     </main>
   );
 }
-

@@ -4,6 +4,8 @@ import React from "react";
 import PageHero from "@/components/PageHero";
 import { Linkedin } from "lucide-react";
 import Link from "next/link";
+import Testimonials from "@/components/Testimonials";
+import CTA from "@/components/CTA";
 
 const teamMembers = [
   {
@@ -105,7 +107,8 @@ export default function TeamPage() {
           </div>
         </div>
       </section>
+      <Testimonials />
+      <CTA />
     </main>
   );
 }
-

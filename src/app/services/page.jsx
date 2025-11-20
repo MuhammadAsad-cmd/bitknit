@@ -3,6 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import AnimateIn from "@/components/AnimateIn";
+import Clients from "@/components/Clients";
+import Testimonials from "@/components/Testimonials";
+import CTA from "@/components/CTA";
 import {
   Globe,
   Smartphone,
@@ -200,12 +204,17 @@ function ServiceCard({ service }) {
           </li>
         ))}
       </ul>
-      <button className="text-blue-600 font-medium text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+      <Link
+        href="https://wa.me/923070175479"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 font-medium text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all duration-300"
+      >
         Learn more
         <span className="transition-transform duration-300 group-hover:translate-x-1">
           →
         </span>
-      </button>
+      </Link>
     </div>
   );
 }
@@ -231,34 +240,10 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-zinc-900">
-        <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="font-unbounded text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to start your project?
-            </h2>
-            <p className="text-zinc-300 text-lg mb-8">
-              Let's discuss how we can help transform your ideas into reality.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/"
-                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-10 py-4 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl inline-flex items-center justify-center gap-2"
-              >
-                Get Started
-                <span>→</span>
-              </Link>
-              <Link
-                href="/"
-                className="border-2 border-white text-white hover:bg-white hover:text-zinc-900 font-semibold px-10 py-4 rounded-full transition-all duration-200 inline-flex items-center justify-center"
-              >
-                View Our Work
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <Clients />
+      <Testimonials />
+      <CTA />
     </main>
   );
 }
-
