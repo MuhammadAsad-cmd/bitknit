@@ -17,7 +17,7 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://www.bitknit.com"),
+  metadataBase: new URL("https://bitknitlimited.vercel.app"),
   title: {
     default: "Bitknit | Digital Agency for Paid Advertising & Web Development",
     template: "%s | Bitknit",
@@ -28,7 +28,7 @@ export const metadata = {
     title: "Bitknit | Digital Agency for Paid Advertising & Web Development",
     description:
       "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development.",
-    url: "https://www.bitknit.com",
+    url: "https://bitknitlimited.vercel.app",
     siteName: "Bitknit",
     images: [
       {
