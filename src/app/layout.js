@@ -17,8 +17,37 @@ const outfit = Outfit({
 });
 
 export const metadata = {
-  title: "Bitknit | Nit",
-  description: "BitknitNit is a digital agency that specializes in paid advertising, automation, web design and development.",
+  metadataBase: new URL("https://www.bitknit.com"),
+  title: {
+    default: "Bitknit | Digital Agency for Paid Advertising & Web Development",
+    template: "%s | Bitknit",
+  },
+  description:
+    "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development. We help businesses grow through data-driven strategies.",
+  openGraph: {
+    title: "Bitknit | Digital Agency for Paid Advertising & Web Development",
+    description:
+      "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development.",
+    url: "https://www.bitknit.com",
+    siteName: "Bitknit",
+    images: [
+      {
+        url: "/images/metadata/homepage.png",
+        width: 1200,
+        height: 630,
+        alt: "Bitknit Digital Agency",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bitknit | Digital Agency for Paid Advertising & Web Development",
+    description:
+      "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development.",
+    images: ["/images/metadata/homepage.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
