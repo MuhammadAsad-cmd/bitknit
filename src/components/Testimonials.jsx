@@ -1,61 +1,41 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import AnimateIn from "./AnimateIn";
 import GridPattern from "./GridPattern";
+import { testimonialsData } from "@/data/testimonialsData";
 
-const allReviews = [
-  {
-    text:
-      "Professionalism, creativity, and speed. They understood our needs and captured our company's essence in a modern way.",
-    author: "Daniel de Lira, Director at CIA Constructora",
-  },
-  {
-    text:
-      "Delivered a custom internal dashboard that changed how we manage operations. Technically sharp and easy to work with.",
-    author: "Clara Estefanía, Architect at Urbana Group",
-  },
-  {
-    text:
-      "Their collaboration was smooth and efficient. Clear milestones, fast delivery, and solid results.",
-    author: "Jose Armando, Lead Designer at Studio Milcari",
-  },
-  {
-    text:
-      "Highly recommended! The team is attentive and friendly. They helped us significantly increase sales and visibility.",
-    author: "Sandra Villalpando, CEO at Apples Army",
-  },
-  {
-    text:
-      "From responsive designs to seamless UI, they ensured our presence captivates and converts.",
-    author: "Hermanos Peltier, Founders at Peltier Irons",
-  },
-  {
-    text:
-      "Fast follow‑up, creative thinking, and an e‑commerce platform that exceeded expectations.",
-    author: "Diego Hernandez, Project Manager at H2O Power",
-  },
-];
-
-function Card({ text, author }) {
+function Card({ text, name, image }) {
   return (
-    <div className="rounded-2xl bg-white/8 ring-1 ring-white/10 text-white p-5 md:p-6 mx-3 shrink-0 w-[320px] md:w-[380px] h-[220px] md:h-[240px] flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.2)]">
+    <div className="rounded-2xl bg-white/8 ring-1 ring-white/10 text-white p-5 md:p-6 mx-3 shrink-0 w-[320px] md:w-[380px] h-[260px] md:h-[280px] flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.2)]">
       <div className="flex items-center gap-1 text-yellow-300 text-sm mb-3">
         <span>★★★★★</span>
       </div>
       <p className="text-white/90 font-sans leading-relaxed text-sm md:text-[15px] mb-4 grow">{text}</p>
-      <p className="text-[12px] md:text-[13px] text-white/70 font-sans mt-auto">{author}</p>
+      <div className="flex items-center gap-3 mt-auto pt-3 border-t border-white/10">
+        <div className="relative w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/20 shrink-0">
+          <Image
+            src={image}
+            alt={name}
+            fill
+            className="object-cover"
+            sizes="40px"
+          />
+        </div>
+        <p className="text-sm md:text-base text-white font-medium">{name}</p>
+      </div>
     </div>
   );
 }
 
 export default function Testimonials() {
   // Duplicate reviews for seamless loop
-  const duplicatedReviews = [...allReviews, ...allReviews];
+  const duplicatedReviews = [...testimonialsData, ...testimonialsData];
 
   return (
     <section id="reviews">
@@ -99,7 +79,7 @@ export default function Testimonials() {
                 pauseOnHover={true}
               >
                 {duplicatedReviews.map((review, index) => (
-                  <Card key={`row1-${index}`} text={review.text} author={review.author} />
+                  <Card key={`row1-${index}`} text={review.text} name={review.name} image={review.image} />
                 ))}
               </Marquee>
             </div>
@@ -117,7 +97,7 @@ export default function Testimonials() {
                 pauseOnHover={true}
               >
                 {duplicatedReviews.map((review, index) => (
-                  <Card key={`row2-${index}`} text={review.text} author={review.author} />
+                  <Card key={`row2-${index}`} text={review.text} name={review.name} image={review.image} />
                 ))}
               </Marquee>
             </div>

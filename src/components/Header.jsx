@@ -22,17 +22,17 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Check if scrolled past hero section (approximately 100vh)
       setIsScrolled(currentScrollY > 300);
-      
+
       // Hide header when scrolling down, show when scrolling up
       if (currentScrollY > lastScrollY && currentScrollY > 300) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -41,21 +41,19 @@ export default function Header() {
   }, [lastScrollY]);
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full"
-      } ${
-        isScrolled 
-          ? "bg-very-dark-blue/90 backdrop-blur-lg shadow-lg border-b border-white/10" 
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isVisible ? "translate-y-0" : "-translate-y-full"
+        } ${isScrolled
+          ? "bg-very-dark-blue/90 backdrop-blur-lg shadow-lg border-b border-white/10"
           : "bg-very-dark-blue"
-      } py-1.5`}
+        } py-1.5`}
     >
       {/* Grid pattern - show on both states but with different opacity */}
-      <GridPattern 
+      <GridPattern
         primaryOpacity={isScrolled ? 0.1 : 0.25}
         secondaryOpacity={isScrolled ? 0.05 : 0.15}
       />
-      
+
       <div className="container relative z-10">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -97,11 +95,11 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden p-2 text-white"
+            className="md:hidden p-2 text-white border border-white/20 cursor-pointer transition-all duration-200 hover:bg-blue-600 hover:text-white rounded-md ease-in-out"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 hover:animate-spin" />
             ) : (
               <Menu className="w-6 h-6" />
             )}
@@ -111,17 +109,16 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className={`md:hidden border-t relative ${
-          isScrolled 
-            ? "bg-very-dark-blue/70 backdrop-blur-lg border-white/10" 
-            : "bg-very-dark-blue border-white/10"
-        }`}>
+        <div className={`md:hidden border-t relative ${isScrolled
+          ? "bg-very-dark-blue/70 backdrop-blur-lg border-white/10"
+          : "bg-very-dark-blue border-white/10"
+          }`}>
           {/* Grid pattern - show on both states */}
-          <GridPattern 
+          <GridPattern
             primaryOpacity={isScrolled ? 0.1 : 0.25}
             secondaryOpacity={isScrolled ? 0.05 : 0.15}
           />
-          
+
           <nav className="container py-4 flex flex-col gap-4 relative z-10">
             {navItems.map((item) => (
               <Link

@@ -1,54 +1,14 @@
 "use client";
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import AnimateIn from "./AnimateIn";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const projectsData = [
-  {
-    title: "Redesign a website for a gummies company",
-    tags: ["Branding", "UX UI Design", "React Development", "CRO"],
-  },
-  {
-    title: "Redesign a website for a h2O company",
-    tags: [
-      "Branding",
-      "Webflow Development",
-      "UX Research",
-      "WordPress Development",
-      "UX UI Design",
-      "CRO",
-    ],
-  },
-  {
-    title: "Redesign a website for a chile company",
-    tags: [
-      "Branding",
-      "Webflow Development",
-      "UX Research",
-      "Web Development",
-      "WordPress Development",
-      "UX UI Design",
-      "CRO",
-    ],
-  },
-  {
-    title: "E‑commerce revamp for lifestyle brand",
-    tags: ["Shopify", "Performance", "A/B Testing"],
-  },
-  {
-    title: "SaaS marketing site refresh",
-    tags: ["Next.js", "Design Systems", "Analytics"],
-  },
-  {
-    title: "Mobile app landing redesign",
-    tags: ["Landing Page", "Conversion", "SEO"],
-  },
-];
+import { projectsData } from "@/data/projectsData";
 
 const Tag = ({ label }) => (
   <span className="px-3 py-1 text-xs rounded-full border border-zinc-200 bg-zinc-50 text-zinc-700">
@@ -113,14 +73,27 @@ export default function Projects() {
             }}
           >
             {projectsData.map((project, idx) => (
-              <SwiperSlide key={idx} className="!h-auto">
+              <SwiperSlide key={project.id} className="!h-auto">
                 <AnimateIn type="fade-up" delay={0.2 + (idx % 3) * 0.1} className="h-full">
-                  <article className="group h-full flex flex-col rounded-3xl overflow-hidden border border-zinc-200 bg-white shadow-sm hover:shadow-lg transition-shadow">
-                    <div className="aspect-video w-full bg-linear-to-br from-zinc-200 to-zinc-100 shrink-0"></div>
+                  <article className="group h-full flex flex-col rounded-3xl overflow-hidden border border-zinc-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300">
+                    <div className="aspect-video w-full relative overflow-hidden bg-zinc-100 shrink-0">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 640px) 90vw, (max-width: 768px) 45vw, (max-width: 1024px) 33vw, 400px"
+                      />
+                    </div>
                     <div className="p-5 md:p-6 flex flex-col grow">
-                      <h3 className="text-zinc-900 text-lg md:text-xl font-semibold leading-snug mb-auto">
-                        {project.title}
-                      </h3>
+                      <div className="mb-auto">
+                        <h3 className="text-zinc-900 text-lg md:text-xl font-semibold leading-snug mb-2">
+                          {project.title}
+                        </h3>
+                        <p className="text-zinc-600 text-sm md:text-base leading-relaxed">
+                          {project.description}
+                        </p>
+                      </div>
                       <div className="mt-4 flex flex-wrap gap-2">
                         {project.tags.map((t) => (
                           <Tag key={t} label={t} />

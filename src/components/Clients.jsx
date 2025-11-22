@@ -27,12 +27,12 @@ export default function Clients() {
         <div className="text-center mb-12 md:mb-16">
           <AnimateIn type="fade-up" delay={0.1}>
             <h2 className="font-unbounded text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 leading-tight mb-4">
-              Our Valued Clients
+              Clients We've Worked With
             </h2>
           </AnimateIn>
           <AnimateIn type="fade-up" delay={0.2}>
             <p className="text-zinc-600 text-base md:text-lg max-w-3xl mx-auto">
-              We’re proud to collaborate with ambitious startups and global enterprises who trust us to deliver quality and innovation.
+              Trusted by innovative companies worldwide to deliver exceptional digital experiences that drive real business results.
             </p>
           </AnimateIn>
         </div>

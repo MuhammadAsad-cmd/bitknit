@@ -29,13 +29,13 @@ const variants = {
   },
 };
 
-export default function AnimateIn({ 
-  children, 
-  type = "fade-up", 
-  delay = 0, 
+export default function AnimateIn({
+  children,
+  type = "fade-up",
+  delay = 0,
   duration = 0.5,
   priority = false,
-  className 
+  className
 }) {
   return (
     <motion.div
