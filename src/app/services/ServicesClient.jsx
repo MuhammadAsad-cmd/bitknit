@@ -183,7 +183,7 @@ function ServiceCard({ service }) {
   return (
     <div className="group relative bg-white rounded-2xl p-6 md:p-8 border border-zinc-200 hover:border-blue-500 transition-all duration-300 hover:shadow-xl">
       <div className="flex items-start gap-4 mb-4">
-        <div className="flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+        <div className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-600 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
           <IconComponent className="w-6 h-6 md:w-7 md:h-7" />
         </div>
         <h3 className="font-unbounded text-xl md:text-2xl font-semibold text-zinc-900 leading-tight">

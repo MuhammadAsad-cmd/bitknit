@@ -57,7 +57,7 @@ function TeamCard({ member }) {
   return (
     <div className="group bg-white rounded-2xl overflow-hidden border border-zinc-200 hover:border-blue-500 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
       {/* Image Container */}
-      <div className="relative w-full aspect-[4/5] overflow-hidden bg-gradient-to-br from-zinc-100 to-zinc-200">
+      <div className="relative w-full aspect-4/5 overflow-hidden bg-linear-to-br from-zinc-100 to-zinc-200">
         {member.image ? (
           <>
             <Image
@@ -68,7 +68,7 @@ function TeamCard({ member }) {
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </>
         ) : (
           <div className="w-full h-full flex items-center justify-center text-zinc-400 text-5xl md:text-6xl font-bold">
@@ -82,7 +82,7 @@ function TeamCard({ member }) {
         <h3 className="font-unbounded text-lg md:text-xl font-semibold text-zinc-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
           {member.name}
         </h3>
-        <p className="text-zinc-600 text-sm md:text-base mb-4 min-h-[2.5rem]">{member.role}</p>
+        <p className="text-zinc-600 text-sm md:text-base mb-4 min-h-10">{member.role}</p>
         
         <Link
           href={member.linkedin || "#"}
