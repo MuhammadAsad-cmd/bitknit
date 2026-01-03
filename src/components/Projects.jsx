@@ -65,7 +65,7 @@ export default function Projects() {
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
-            className="!pb-12"
+            className="pb-12!"
             breakpoints={{
               640: { slidesPerView: 1.5, spaceBetween: 20 },
               768: { slidesPerView: 2.2, spaceBetween: 24 },
@@ -73,7 +73,7 @@ export default function Projects() {
             }}
           >
             {projectsData.map((project, idx) => (
-              <SwiperSlide key={project.id} className="!h-auto">
+              <SwiperSlide key={project.id} className="h-auto!">
                 <AnimateIn type="fade-up" delay={0.2 + (idx % 3) * 0.1} className="h-full">
                   <article className="group h-full flex flex-col rounded-3xl overflow-hidden border border-zinc-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300">
                     <div className="aspect-video w-full relative overflow-hidden bg-zinc-100 shrink-0">
