@@ -46,7 +46,13 @@ const teamMembers = [
   {
      name: "Muhammad Farqualit",
     role: "UI/UX Designer",
-    image: "/images/team/farqualit2.png",
+    image: "/images/team/farqualit.png",
+    linkedin: "",
+  },  
+  {
+    name: "Muhammad Rabeet",
+    role: "lead generation specialist",
+    image: "/images/team/rabeet.jpg",
     linkedin: "",
   },  
 ];

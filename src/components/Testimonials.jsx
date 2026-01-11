@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -34,8 +34,25 @@ function Card({ text, name, image }) {
 }
 
 export default function Testimonials() {
-  // Duplicate reviews for seamless loop
-  const duplicatedReviews = [...testimonialsData, ...testimonialsData];
+  // Shuffle function to randomize array
+  const shuffleArray = (array) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
+  // Create shuffled versions for each row (only shuffle once on mount)
+  const shuffledRow1 = useMemo(
+    () => shuffleArray([...testimonialsData, ...testimonialsData]),
+    []
+  );
+  const shuffledRow2 = useMemo(
+    () => shuffleArray([...testimonialsData, ...testimonialsData]),
+    []
+  );
 
   return (
     <section id="reviews">
@@ -78,7 +95,7 @@ export default function Testimonials() {
                 gradientWidth={100}
                 pauseOnHover={true}
               >
-                {duplicatedReviews.map((review, index) => (
+                {shuffledRow1.map((review, index) => (
                   <Card key={`row1-${index}`} text={review.text} name={review.name} image={review.image} />
                 ))}
               </Marquee>
@@ -96,7 +113,7 @@ export default function Testimonials() {
                 gradientWidth={100}
                 pauseOnHover={true}
               >
-                {duplicatedReviews.map((review, index) => (
+                {shuffledRow2.map((review, index) => (
                   <Card key={`row2-${index}`} text={review.text} name={review.name} image={review.image} />
                 ))}
               </Marquee>

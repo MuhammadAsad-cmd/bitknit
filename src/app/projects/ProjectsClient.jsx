@@ -6,8 +6,6 @@ import CTA from "@/components/CTA";
 import { projectsData } from "@/data/projectsData";
 import Image from "next/image";
 
-
-
 const Tag = ({ label }) => (
   <span className="px-3 py-1 text-xs rounded-full border border-zinc-200 bg-zinc-50 text-zinc-700">
     {label}
@@ -48,11 +46,11 @@ export default function ProjectsClient() {
                   <p className="text-zinc-600 text-sm md:text-base leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  {/* <div className="mt-4 flex flex-wrap gap-2">
                     {project.tags.map((t) => (
                       <Tag key={t} label={t} />
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               </article>
             ))}

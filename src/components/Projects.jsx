@@ -74,7 +74,6 @@ export default function Projects() {
           >
             {projectsData.map((project, idx) => (
               <SwiperSlide key={project.id} className="h-auto!">
-                <AnimateIn type="fade-up" delay={0.2 + (idx % 3) * 0.1} className="h-full">
                   <article className="group h-full flex flex-col rounded-3xl overflow-hidden border border-zinc-200 bg-white shadow-sm hover:shadow-lg transition-all duration-300">
                     <div className="aspect-video w-full relative overflow-hidden bg-zinc-100 shrink-0">
                       <Image
@@ -94,14 +93,13 @@ export default function Projects() {
                           {project.description}
                         </p>
                       </div>
-                      <div className="mt-4 flex flex-wrap gap-2">
+                      {/* <div className="mt-4 flex flex-wrap gap-2">
                         {project.tags.map((t) => (
                           <Tag key={t} label={t} />
                         ))}
-                      </div>
+                      </div> */}
                     </div>
                   </article>
-                </AnimateIn>
               </SwiperSlide>
             ))}
           </Swiper>
