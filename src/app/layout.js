@@ -2,8 +2,6 @@ import { Outfit, Unbounded } from "next/font/google";
 import "./globals.css";
 import MainLayout from "@/components/layouts/MainLayout";
 
-// add outfit font
-//  add   font-family: "Unbounded", sans-serif; for the heading
 const unbounded = Unbounded({
   variable: "--font-unbounded",
   subsets: ["latin"],
@@ -16,23 +14,53 @@ const outfit = Outfit({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.bitknitlimited.com";
+
 export const metadata = {
-  metadataBase: new URL("https://bitknitlimited.vercel.app"),
   title: {
     default: "Bitknit | Digital Agency for Paid Advertising & Web Development",
     template: "%s | Bitknit",
   },
   description:
     "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development. We help businesses grow through data-driven strategies.",
+  authors: [{ name: "Bitknit Limited" }],
+  creator: "Bitknit Limited",
+  publisher: "Bitknit Limited",
+  applicationName: "Bitknit | Digital Agency",
+  keywords: [
+    "Digital Agency",
+    "Web Development",
+    "Mobile App Development",
+    "UI/UX Design",
+    "Paid Advertising",
+    "Business Automation",
+    "Custom Software Development",
+    "Next.js",
+    "React.js",
+    "Flutter",
+    "Node.js",
+    "E-commerce Solutions",
+    "Cloud Solutions",
+    "AI & Machine Learning",
+    "Bitknit",
+    "Bitknit Limited",
+    "Digital Marketing",
+    "Web Design",
+    "Software Development",
+  ],
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     title: "Bitknit | Digital Agency for Paid Advertising & Web Development",
     description:
-      "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development.",
-    url: "https://bitknitlimited.vercel.app",
+      "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development. We help businesses grow through data-driven strategies.",
+    url: siteUrl,
     siteName: "Bitknit",
     images: [
       {
-        url: "/images/metadata/homepage.png",
+        url: `${siteUrl}/images/metadata/homepage.png`,
         width: 1200,
         height: 630,
         alt: "Bitknit Digital Agency",
@@ -46,7 +74,10 @@ export const metadata = {
     title: "Bitknit | Digital Agency for Paid Advertising & Web Development",
     description:
       "Bitknit is a premier digital agency specializing in paid advertising, business automation, and custom web design and development.",
-    images: ["/images/metadata/homepage.png"],
+    images: [`${siteUrl}/images/metadata/homepage.png`],
+  },
+  other: {
+    "linkedin:company": "https://www.linkedin.com/company/bitknit-limited/",
   },
 };
 
