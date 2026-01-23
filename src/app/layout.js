@@ -52,6 +52,11 @@ export const metadata = {
   alternates: {
     canonical: siteUrl,
   },
+  icons: {
+    icon: `${siteUrl}/images/log B.png`,
+    shortcut: `${siteUrl}/images/log B.png`,
+    apple: `${siteUrl}/images/log B.png`,
+  },
   openGraph: {
     title: "Bitknit | Digital Agency for Paid Advertising & Web Development",
     description:
